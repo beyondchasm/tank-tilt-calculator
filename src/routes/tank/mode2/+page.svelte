@@ -61,6 +61,9 @@
       </header>
   
       <main class="min-h-screen bg-white p-6">
+        <div class="max-w-3xl mx-auto space-y-6 border mx-auto px-2 rounded-lg p-4 mb-8">
+          <a class="font-small" href="/tank/mode1">👉🏻 탱크 높이 기준 계산으로 이동</a>
+        </div>
         <div class="max-w-3xl mx-auto space-y-6">
           <fieldset class="border rounded-lg p-4 space-y-4">
             <legend class="px-2 font-medium">모드 2: 수평 거리 기준 계산</legend>

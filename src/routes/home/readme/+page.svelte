@@ -45,13 +45,17 @@
       <div class="max-w-5xl mx-auto">
         <h2 class="text-3xl font-semibold text-center mb-10">주요 기능</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="p-6 bg-white rounded-lg shadow">
-            <h3 class="font-bold mb-2">탱크 기울기 계산기</h3>
-            <p class="text-gray-600 text-sm">
-              관측 각도와 높이/거리 입력만으로<br/>
-              기울기 비율·수평거리·관측거리 계산
-            </p>
-          </div>
+                  <a
+                    href="/tank/mode1"
+                    
+                    class="block p-6 bg-white rounded-lg shadow hover:shadow-md transition cursor-pointer"
+                  >
+                    <h3 class="font-bold mb-2">탱크 기울기 계산기</h3>
+                    <p class="text-gray-600 text-sm">
+                      관측 각도와 높이/거리 입력만으로<br/>
+                      기울기 비율·수평거리·관측거리 계산
+                    </p>
+                  </a>
           <!-- <div class="p-6 bg-white rounded-lg shadow">
             <h3 class="font-bold mb-2">파이프 길이 계산기</h3>
             <p class="text-gray-600 text-sm">
