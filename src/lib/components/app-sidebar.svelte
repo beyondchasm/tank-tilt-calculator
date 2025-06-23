@@ -29,7 +29,18 @@
 					},
 				],
 			},
+			{
+				title: "Gas Storage Calulotor",
+				url: "/gas-storage",
+				items: [
+					{
+						title: "가스 저장량 계산기",
+						url: "/gas-storage",
+						
+					},
 			
+				],
+			},
 		],
 	};
 </script>
