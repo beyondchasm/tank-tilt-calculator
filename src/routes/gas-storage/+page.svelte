@@ -69,7 +69,7 @@
       : `✅ 비허가대상 (값: ${val.toFixed(3)})`;
   }
 
-  // initial entries
+  // 초기 항목 하나씩 추가
   addComp();
   addLiq();
   addCtn();
@@ -95,133 +95,133 @@
       </Breadcrumb.Root>
     </header>
 
-    <main class="p-6 max-w-4xl mx-auto space-y-8">
-      <h1 class="text-2xl font-bold text-center">가스 저장량 계산기 + 허가대상 판단</h1>
+    <main class="p-4 md:p-6 max-w-4xl mx-auto space-y-8">
+      <h1 class="text-2xl md:text-3xl font-bold text-center">가스 저장량 계산기 + 허가대상 판단</h1>
 
       <!-- 1. 압축가스 -->
-      <fieldset class="border rounded p-4 space-y-4">
+      <fieldset class="border rounded-lg p-4 space-y-4">
         <legend class="font-medium">1. 압축가스 저장량 (A, m³)</legend>
         <div class="text-gray-600 text-sm">A = (10P+1)·V₁·N</div>
-        <div>
+        <div class="space-y-2">
           {#each compEntries as e (e.id)}
-          <div class="border p-2 mb-2 flex items-center space-x-2">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-2 space-y-2 sm:space-y-0 border rounded p-2">
             <input type="number" bind:value={e.p} placeholder="P (MPa)"
-                   class="border rounded px-2 py-1 w-24" />
+                   class="w-full sm:w-24 border rounded px-2 py-1" />
             <input type="number" bind:value={e.v1} placeholder="V₁ (m³)"
-                   class="border rounded px-2 py-1 w-24" />
+                   class="w-full sm:w-24 border rounded px-2 py-1" />
             <input type="number" bind:value={e.n} placeholder="N"
-                   class="border rounded px-2 py-1 w-16" />
+                   class="w-full sm:w-16 border rounded px-2 py-1" />
             <button on:click={() => calcComp(e)}
-                    class="px-2 py-0.5 bg-blue-500 text-white rounded text-xs">
+                    class="w-full sm:w-auto px-2 py-1 bg-blue-500 text-white rounded">
               계산
             </button>
             <button on:click={() => remove(compEntries, e.id, v => compEntries = v)}
-                    class="px-2 py-0.5 bg-red-500 text-white rounded text-xs">
+                    class="w-full sm:w-auto px-2 py-1 bg-red-500 text-white rounded">
               삭제
             </button>
-            <div id={`resComp${e.id}`} class="text-sm"></div>
+            <div id={`resComp${e.id}`} class="text-sm mt-1 sm:mt-0"></div>
           </div>
           {/each}
         </div>
         <button on:click={addComp}
-                class="px-4 py-1 bg-green-600 text-white rounded">
+                class="w-full sm:w-auto px-4 py-2 bg-green-600 text-white rounded">
           + 항목 추가
         </button>
         <div id="resultQ" class="mt-2 p-2 bg-gray-100 border-l-4 border-blue-500 text-sm"></div>
       </fieldset>
 
       <!-- 2. 액화가스 -->
-      <fieldset class="border rounded p-4 space-y-4">
+      <fieldset class="border rounded-lg p-4 space-y-4">
         <legend class="font-medium">2. 액화가스 저장량 (B, kg)</legend>
         <div class="text-gray-600 text-sm">B = 0.9·d·V₂·N</div>
-        <div>
+        <div class="space-y-2">
           {#each liqEntries as e (e.id)}
-          <div class="border p-2 mb-2 flex items-center space-x-2">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-2 space-y-2 sm:space-y-0 border rounded p-2">
             <input type="number" bind:value={e.d} placeholder="d (kg/L)"
-                   class="border rounded px-2 py-1 w-24" />
+                   class="w-full sm:w-24 border rounded px-2 py-1" />
             <input type="number" bind:value={e.v2} placeholder="V₂ (L)"
-                   class="border rounded px-2 py-1 w-24" />
+                   class="w-full sm:w-24 border rounded px-2 py-1" />
             <input type="number" bind:value={e.n} placeholder="N"
-                   class="border rounded px-2 py-1 w-16" />
+                   class="w-full sm:w-16 border rounded px-2 py-1" />
             <button on:click={() => calcLiq(e)}
-                    class="px-2 py-0.5 bg-blue-500 text-white rounded text-xs">
+                    class="w-full sm:w-auto px-2 py-1 bg-blue-500 text-white rounded">
               계산
             </button>
             <button on:click={() => remove(liqEntries, e.id, v => liqEntries = v)}
-                    class="px-2 py-0.5 bg-red-500 text-white rounded text-xs">
+                    class="w-full sm:w-auto px-2 py-1 bg-red-500 text-white rounded">
               삭제
             </button>
-            <div id={`resLiq${e.id}`} class="text-sm"></div>
+            <div id={`resLiq${e.id}`} class="text-sm mt-1 sm:mt-0"></div>
           </div>
           {/each}
         </div>
         <button on:click={addLiq}
-                class="px-4 py-1 bg-green-600 text-white rounded">
+                class="w-full sm:w-auto px-4 py-2 bg-green-600 text-white rounded">
           + 항목 추가
         </button>
         <div id="resultB" class="mt-2 p-2 bg-gray-100 border-l-4 border-blue-500 text-sm"></div>
       </fieldset>
 
       <!-- 3. 용기 저장량 -->
-      <fieldset class="border rounded p-4 space-y-4">
+      <fieldset class="border rounded-lg p-4 space-y-4">
         <legend class="font-medium">3. 용기 저장량 (C, kg)</legend>
         <div class="text-gray-600 text-sm">C = (V₂ ÷ C)·N</div>
-        <div>
+        <div class="space-y-2">
           {#each ctnEntries as e (e.id)}
-          <div class="border p-2 mb-2 flex items-center space-x-2">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-2 space-y-2 sm:space-y-0 border rounded p-2">
             <input type="number" bind:value={e.v2} placeholder="V₂ (L)"
-                   class="border rounded px-2 py-1 w-24" />
+                   class="w-full sm:w-24 border rounded px-2 py-1" />
             <input type="number" bind:value={e.c} placeholder="정수 C"
-                   class="border rounded px-2 py-1 w-24" />
+                   class="w-full sm:w-24 border rounded px-2 py-1" />
             <input type="number" bind:value={e.n} placeholder="N"
-                   class="border rounded px-2 py-1 w-16" />
+                   class="w-full sm:w-16 border rounded px-2 py-1" />
             <button on:click={() => calcCtn(e)}
-                    class="px-2 py-0.5 bg-blue-500 text-white rounded text-xs">
+                    class="w-full sm:w-auto px-2 py-1 bg-blue-500 text-white rounded">
               계산
             </button>
             <button on:click={() => remove(ctnEntries, e.id, v => ctnEntries = v)}
-                    class="px-2 py-0.5 bg-red-500 text-white rounded text-xs">
+                    class="w-full sm:w-auto px-2 py-1 bg-red-500 text-white rounded">
               삭제
             </button>
-            <div id={`resCtn${e.id}`} class="text-sm"></div>
+            <div id={`resCtn${e.id}`} class="text-sm mt-1 sm:mt-0"></div>
           </div>
           {/each}
         </div>
         <button on:click={addCtn}
-                class="px-4 py-1 bg-green-600 text-white rounded">
+                class="w-full sm:w-auto px-4 py-2 bg-green-600 text-white rounded">
           + 항목 추가
         </button>
         <div id="resultC" class="mt-2 p-2 bg-gray-100 border-l-4 border-blue-500 text-sm"></div>
       </fieldset>
 
       <!-- 4~7. 독성 가스 -->
-      <fieldset class="border rounded p-4 space-y-4">
+      <fieldset class="border rounded-lg p-4 space-y-4">
         <legend class="font-medium">4~7. 독성가스 저장량</legend>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <input id="w" type="number" placeholder="W (kg)"
-                 class="border rounded px-2 py-1 w-full" />
+                 class="w-full border rounded px-2 py-1" />
           <input id="x" type="number" placeholder="X (kg)"
-                 class="border rounded px-2 py-1 w-full" />
+                 class="w-full border rounded px-2 py-1" />
           <input id="y" type="number" placeholder="Y (m³)"
-                 class="border rounded px-2 py-1 w-full" />
+                 class="w-full border rounded px-2 py-1" />
           <input id="z" type="number" placeholder="Z (m³)"
-                 class="border rounded px-2 py-1 w-full" />
+                 class="w-full border rounded px-2 py-1" />
         </div>
         <button on:click={calcToxic}
-                class="px-4 py-1 bg-blue-600 text-white rounded">
+                class="w-full sm:w-auto px-4 py-2 bg-blue-600 text-white rounded">
           독성 계산
         </button>
         <div id="resultToxic" class="mt-2 p-2 bg-gray-100 border-l-4 border-blue-500 text-sm"></div>
       </fieldset>
 
       <!-- 허가대상 여부 -->
-      <fieldset class="border rounded p-4">
+      <fieldset class="border rounded-lg p-4">
         <legend class="font-medium">허가대상 여부</legend>
         <div class="text-gray-600 text-sm mb-2">
           기준: (A/500)+(B/5000)+(C/5000)+(W/1000)+(X/100)+(Y/100)+(Z/10) ≥ 1
         </div>
         <button on:click={checkPerm}
-                class="px-4 py-1 bg-red-600 text-white rounded">
+                class="w-full sm:w-auto px-4 py-2 bg-red-600 text-white rounded">
           판단하기
         </button>
         <div class="mt-2 p-2 bg-gray-100 border-l-4 border-blue-500 text-sm">
