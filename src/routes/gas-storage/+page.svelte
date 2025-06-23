@@ -23,21 +23,21 @@
     compEntries = [
       ...compEntries,
       // 기본값 p=1, v1=1, n=1
-      { id: nextComp++, p: 1, v1: 1, n: 1 }
+      { id: nextComp++, p: 0, v1: 0, n: 1 }
     ];
   }
   function addLiq() {
     liqEntries = [
       ...liqEntries,
       // 기본값 d=1, v2=1, n=1
-      { id: nextLiq++, d: 1, v2: 1, n: 1 }
+      { id: nextLiq++, d: 0, v2: 0, n: 1 }
     ];
   }
   function addCtn() {
     ctnEntries = [
       ...ctnEntries,
       // 기본값 v2=1, c=1, n=1
-      { id: nextCtn++, v2: 1, c: 1, n: 1 }
+      { id: nextCtn++, v2: 0, c: 0, n: 1 }
     ];
   }
 
@@ -296,7 +296,7 @@
             id="w"
             type="number"
             placeholder="W (kg)"
-            value="1"
+          
             class="w-full border rounded px-2 py-1"
           />
         </label>
@@ -305,7 +305,7 @@
             id="x"
             type="number"
             placeholder="X (kg)"
-            value="1"
+      
             class="w-full border rounded px-2 py-1"
           />
           </label>
@@ -314,7 +314,7 @@
             id="y"
             type="number"
             placeholder="Y (m³)"
-            value="1"
+        
             class="w-full border rounded px-2 py-1"
           />
           </label>
@@ -323,7 +323,7 @@
             id="z"
             type="number"
             placeholder="Z (m³)"
-            value="1"
+            
             class="w-full border rounded px-2 py-1"
           />
           </label>
