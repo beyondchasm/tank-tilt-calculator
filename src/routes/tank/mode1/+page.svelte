@@ -7,11 +7,11 @@
   import '../../../app.css';
 
   // 모드1 계산 변수
-  let bDeg = 3.4948;
-  let bAz  = 7.1602;
-  let cDeg = 20.4192;
-  let cAz  = 7.2121;
-  let h    = 6.563;
+  let bDeg = 0;
+  let bAz  = 0;
+  let cDeg = 0;
+  let cAz  = 0;
+  let h    = 0;
   let result = '';
 
   const degToRad = (deg: number) => deg * Math.PI / 180;
